@@ -1,6 +1,7 @@
 const mongoose= require("mongoose");
 const { listingSchema } = require("../schema");
 const Review = require("./review"); 
+const User = require("./user"); 
 
 const Schema = mongoose.Schema;
 const ListingSchema = new Schema({
@@ -10,9 +11,8 @@ const ListingSchema = new Schema({
     },
     description: String,
     image:{ 
-        type: String,
-        default: "https://media.istockphoto.com/id/1348022335/photo/la-defense-financial-district-in-paris.jpg?s=1024x1024&w=is&k=20&c=IxCXX5iSZh3hoh-em-TtENeVQERPjQsgRUpB5h_6sOU=",
-        set: (v)=>v==="" ? "https://media.istockphoto.com/id/1348022335/photo/la-defense-financial-district-in-paris.jpg?s=1024x1024&w=is&k=20&c=IxCXX5iSZh3hoh-em-TtENeVQERPjQsgRUpB5h_6sOU=" : v,
+        url: String,
+        filename: String,
     },
     price: Number,
     location: String,
@@ -22,7 +22,11 @@ const ListingSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Review"
         }
-    ]
+    ],
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
 })
 
 ListingSchema.post("findOneAndDelete", async(listing)=>{

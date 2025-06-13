@@ -19,7 +19,7 @@ const initDB= async ()=>{
 
     // console.log(data);
     // await Listing.insertMany(initData.data);
-    
+    initData.data = initData.data.map((obj)=>({...obj, owner:"682c15d0730321ce9e3f5623"}));
 
     await Listing.insertMany(initData.data);
 
