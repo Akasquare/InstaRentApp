@@ -9,6 +9,9 @@ const multer  = require('multer')
 const {storage} = require("../cloudconfig.js");
 const upload = multer({storage})
 
+
+ 
+
 router
     .route("/")
 //index route
@@ -42,5 +45,11 @@ router
     .get( wrapAsync(listingController.showListing))
 
  
+
+router.get("/filter/:category", wrapAsync(async (req, res) => {
+    const { category } = req.params;
+    const AllListing = await Listing.find({ category });
+    res.render("listings/index.ejs", { AllListing });
+}));
 
 module.exports = router;

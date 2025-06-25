@@ -17,7 +17,22 @@
             class="form-control"></textarea>
             <div class="invalid-feedback">Please enter short description</div>
         </div>
-        
+
+        <div class="mb-3">
+            <select class="form-select" name="listing[category]" required>
+            <option value="Trending">Trending</option>
+            <option value="Rooms">Rooms</option>
+            <option value="Iconic cities">Iconic cities</option>
+            <option value="Mountain">Mountain</option>
+            <option value="Castles">Castles</option>
+            <option value="Amazing Pools">Amazing Pools</option>
+            <option value="Camping">Camping</option>
+            <option value="Farms">Farms</option>
+            <option value="Arctic">Arctic</option>
+            <option value="Domes">Domes</option>
+            </select>
+
+        </div>
        <div class="mb-3">
             <label for="image" class="form-label">Upload Image</label>
             <input type="file" name="listing[image]" class="form-control" required>
