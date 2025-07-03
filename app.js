@@ -93,6 +93,12 @@ app.use("/listings/:id/reviews", reviewRouter)
 app.use("/", userRouter)
 
 
+app.use( (req, res,next)=>{
+
+ console.log("1st middleware");
+ next(new ExpressError(404, "Page Not Found"))
+ // res.send("im in middle");
+})
 app.all("*", (req, res, next)=>{
     next(new ExpressError(404, "Page Not Found"))
 
@@ -104,6 +110,6 @@ app.use((err, req, res, next )=>{
     res.status(statusCode).render("Error.ejs", {err});
 })
 
-app.listen(8080, ()=>{
+app.listen(8081, ()=>{
     console.log("server is listening to ports 8080");
 });

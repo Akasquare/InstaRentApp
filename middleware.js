@@ -47,6 +47,8 @@ module.exports.validateListing = (req, res, next)=>{
         throw new ExpressError(400, errMsg);
     }else{
         next();
+ 
+
     }
 }
 
