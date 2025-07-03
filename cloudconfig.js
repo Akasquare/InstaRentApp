@@ -11,7 +11,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'InstaRentApp_DEV',
-    allowedFormat: ["png", "jpg", "jpeg"],// supports promises as well
+    allowedFormat: ["png", "jpg", "jpeg" , "webp"],// supports promises as well
     
   },
 });
