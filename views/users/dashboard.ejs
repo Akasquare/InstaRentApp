@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate") %>
+ 
+
+<h2 class="mb-4">Welcome, <%= user.username %> 👋</h2>
+
+<p><strong>Email:</strong> <%= user.email %></p>
+<p><strong>Contact:</strong> <%= user.contact %> <button class="btn btn-outline-primary mb-2" data-bs-toggle="collapse" data-bs-target="#contactForm">
+  Edit
+</button></p>
+
+<div class="collapse mb-4" id="contactForm">
+<form action="/dashboard/contact" method="POST" class="mb-4">
+  <div class="mb-3">
+    <label for="contact" class="form-label">New Contact Number</label>
+    <input type="text" name="contact" id="contact" class="form-control" value="<%= user.contact %>" required>
+  </div>
+  <button type="submit" class="btn btn-success">Update Contact</button>
+</form>
+</div>
+
+<hr />
+
+<h3>Your Listings</h3>
+
+<% if (listings.length === 0) { %>
+  <p>You haven't posted any listings yet.</p>
+<% } else { %>
+  <div class="row">
+    <% listings.forEach(listing => { %>
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <img src="<%= listing.image.url %>" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= listing.title %></h5>
+            <p class="card-text"><%= listing.price %> ₹</p>
+            <a href="/listings/<%= listing._id %>" class="btn btn-primary btn-sm">View</a>
+            <a href="/listings/<%= listing._id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+            <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" class="d-inline">
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
