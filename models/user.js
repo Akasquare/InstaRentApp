@@ -6,7 +6,12 @@ const passportLocalMongoose =require("passport-local-mongoose");
     email: {
         type: String,
         require: true
+    },
+    contact: {
+        type: String,
+        require: true
     }
+
  })
  userSchema.plugin(passportLocalMongoose);
  module.exports = mongoose.model('User', userSchema);

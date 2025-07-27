@@ -23,6 +23,10 @@ const ListingSchema = new Schema({
             ref: "Review"
         }
     ],
+    // contact:{
+    //     type: String,
+    //     required: true,
+    // },
     owner:{
         type: Schema.Types.ObjectId,
         ref: "User",
