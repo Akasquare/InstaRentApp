@@ -1,7 +1,8 @@
 const Listing = require("../models/listings.js");
 
 module.exports.index = async (req, res) => {
-  const AllListing = await Listing.find({});
+  const AllListing = await Listing.find({}).sort({ timestamp: -1 })
+      .limit(15);
   res.render("listings/index.ejs", { AllListing });
 };
 
