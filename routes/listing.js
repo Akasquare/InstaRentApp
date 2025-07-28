@@ -21,6 +21,8 @@ router
 
 // New Route
 router.get("/new",isLoggedIn , listingController.renderNewForm)
+//search
+router.get("/search", listingController.searchListing)
 
 
 //Edit route
@@ -51,5 +53,7 @@ router.get("/filter/:category", wrapAsync(async (req, res) => {
     const AllListing = await Listing.find({ category });
     res.render("listings/index.ejs", { AllListing });
 }));
+
+
 
 module.exports = router;

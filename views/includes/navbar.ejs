@@ -39,10 +39,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
+        <form class="d-flex" action="/listings/search" method="GET" role="search">
           <input
             class="form-control me-2 search-inp"
             type="search"
+            name="q"
             placeholder="Search Destinations"
             aria-label="Search"
           />

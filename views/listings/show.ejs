@@ -1,8 +1,5 @@
 <% layout("/layouts/boilerplate") %>
-<script>
-  const address = <%- JSON.stringify(listing && listing.location ? listing.location : "") %>;
-  const title = <%- JSON.stringify(listing && listing.title ? listing.title : "") %>;
-</script>
+
 
 <div class="row">
   <div class="col-8 offset-3">
@@ -166,4 +163,16 @@
     <div id="map" style="height: 400px; width: 90%"></div>
   </div>
 </div>
+<!-- <script src="/js/map.js"></script> -->
+
 <script src="/js/map.js"></script>
+<script>
+  const address = <%- JSON.stringify(listing?.location || "") %>;
+  const title = <%- JSON.stringify(listing?.title || "") %>;
+
+  if (address.trim() !== "") {
+    loadMap(address, title);
+  } else {
+    console.warn("No address found for this listing.");
+  }
+</script>

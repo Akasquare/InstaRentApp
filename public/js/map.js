@@ -11,9 +11,9 @@
 //     map: map
 //   });
 // }
+let map;
 
-
-
+function loadMap(address, title) {
 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
     .then(response => response.json())
     .then(data => {
@@ -36,4 +36,4 @@ fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURICompo
     })
     .catch(error => {
       console.error('Geocoding error:', error);
-    });
+    })};
