@@ -6,6 +6,15 @@ module.exports.renderSignupForm = (req, res)=>{
 module.exports.signup = async(req, res)=>{
     try{
        let {username, email, contact, password}= req.body;
+       if(username === email){
+        req.flash("error", "Email and Username can't be same.");
+        return res.redirect("/signup");
+       }
+       const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        req.flash("error", "Email is already registered.");
+        return res.redirect("/signup");
+      }
     const newUser= new User({email, contact,username});
     const registeredUser = await User.register(newUser, password)
     // console.log(registeredUser);
